@@ -1,0 +1,75 @@
+﻿@using HRApplication.Data
+@model List<Department>
+@{
+    ViewData["Title"] = "DepartmentList";
+}
+
+<h1>DepartmentList</h1>
+
+
+@section Body{ 
+
+    <form method="post">
+
+        <div class="row" style="margin-top:25px">
+
+            <div class="col-lg-1">
+                <label>Name</label>
+            </div>
+            <div class="col-lg-4">
+                <input type="text" class="form-control" name="Name" />
+            </div>
+
+            <div class="col-lg-2">
+                <input type="submit" asp-action="GetDepartment" class="btn btn-primary" value="Search" />
+            </div>
+
+        </div>
+
+
+        <div class="row" style="margin-top:25px">
+
+            <div class="col-lg-offset-0">
+
+                <table class="table table-bordered">
+
+                    <thead>
+
+                        <tr>
+                            <th>NameOfDepartment</th>
+                            <th>Description</th>
+                            <th>Option</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var department in Model)
+                        {
+                            <tr>
+
+                                <td>@department.Name</td>
+                                <td>@department.Description</td>
+                                <td>
+
+                                    <a asp-action="EditDepartment" asp-route-id="@department.ID">Edit </a>
+                                    <a asp-action="DeleteDepartment" asp-route-id="@department.ID">Delete </a>
+                                    <a asp-action="GetEmployeesByDepartment" asp-controller="Employee" asp-route-id="@department.ID">Employees</a>
+
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+    </form>
+
+}
+

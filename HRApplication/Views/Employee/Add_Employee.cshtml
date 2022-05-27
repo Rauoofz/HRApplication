@@ -1,0 +1,164 @@
+﻿@model VmCompany
+@{
+    ViewData["Title"] = "Add_Employee";
+}
+
+<h1>Add_Employee</h1>
+
+
+@section Body{ 
+
+    <form method="post" enctype="multipart/form-data">
+
+        <input type="hidden" asp-for="employee.ID"/>
+        <input type="hidden" asp-for="employee.Path"/>
+
+        <div class="row" style="margin-top:20px">
+
+            <div class="col-lg-1">
+                <label asp-for="employee.FirstName"></label>
+            </div>
+            <div class="col-lg-4">
+                <input asp-for="employee.FirstName" class="form-control" />
+            </div>
+
+            <div class="col-lg-1">
+                <label asp-for="employee.LastName"></label>
+            </div>
+            <div class="col-lg-4">
+                <input asp-for="employee.LastName" class="form-control" />
+            </div>
+
+        </div>
+        <div class="row" style="margin-top:20px">
+
+            <div class="col-lg-1">
+                <label asp-for="employee.Phone"></label>
+            </div>
+            <div class="col-lg-4">
+                <input asp-for="employee.Phone" class="form-control" />
+            </div>
+
+        
+            <div class="col-lg-1">
+                <label asp-for="employee.Gender"></label>
+            </div>
+            <div class="col-lg-4">
+                <select asp-for="employee.Gender" class="form-control">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="row" style="margin-top:20px">
+
+            <div class="col-lg-1">
+                <label>Country</label>
+            </div>
+            <div class="col-lg-4">
+                <select asp-for="employee.CountryID" asp-items='new SelectList(Model.countries,"ID","Name")' class="form-control"></select>
+            </div>
+
+        
+            <div class="col-lg-1">
+                <label>City</label>
+            </div>
+            <div class="col-lg-4">
+                <select asp-for="employee.CityID" asp-items='new SelectList(Model.cities,"ID","Name")' class="form-control"></select>
+            </div>
+
+        </div>
+
+        <div class="row" style="margin-top:20px">
+
+            <div class="col-lg-1">
+                <label asp-for="employee.Address"></label>
+            </div>
+            <div class="col-lg-4">
+                <input asp-for="employee.Address" class="form-control" />
+            </div>
+
+       
+            <div class="col-lg-1">
+                <label asp-for="employee.Email"></label>
+            </div>
+            <div class="col-lg-4">
+                <input asp-for="employee.Email" class="form-control" />
+            </div>
+
+        </div>
+        <div class="row" style="margin-top:20px">
+
+            <div class="col-lg-1">
+                <label asp-for="employee.Salary"></label>
+            </div>
+            <div class="col-lg-4">
+                <input asp-for="employee.Salary" class="form-control" />
+            </div>
+
+       
+            <div class="col-lg-1">
+                <label asp-for="employee.ExpactedSalary"></label>
+            </div>
+            <div class="col-lg-4">
+                <input asp-for="employee.ExpactedSalary" class="form-control" />
+            </div>
+
+        </div>
+
+        <div class="row" style="margin-top:20px">
+
+            <div class="col-lg-1">
+                <label>Department</label>
+            </div>
+            <div class="col-lg-4">
+                <select asp-for="employee.DepartmentID" asp-items='new SelectList(Model.departments,"ID","Name")' class="form-control"></select>
+            </div>
+
+       
+            <div class="col-lg-1">
+                <label asp-for="employee.HireDate"></label>
+            </div>
+            <div class="col-lg-4">
+                <input asp-for="employee.HireDate" class="form-control" />
+            </div>
+
+        </div>
+
+        <div class="row" style="margin-top:20px">
+
+            <div class="col-lg-1">
+                <label asp-for="employee.Image"></label>
+            </div>
+            <div class="col-lg-4">
+                <input asp-for="employee.Image"/>
+            </div>
+
+        </div>
+
+        <div class="row" style="margin-top:20px">
+
+            <div class="col-lg-offset-9">
+
+                @if (Model.employee.ID <= 0)
+                {
+                    <input type="submit" asp-action="CreateEmployee" class="btn btn-primary" value="CreateEmployee" />
+                }
+                else
+                {
+                    <input type="submit" asp-action="UpdateEmployee" class="btn btn-primary" value="UpdateEmployee" />
+                }
+
+
+
+
+            </div>
+
+        </div>
+
+    </form>
+
+}
+

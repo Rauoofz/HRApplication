@@ -1,0 +1,47 @@
+﻿@using HRApplication.Data
+@model Department
+@{
+    ViewData["Title"] = "AddDepartment";
+}
+
+<h1>AddDepartment</h1>
+
+@section Body{ 
+
+    <form method="post">
+
+        <div class="row" style="margin-top:25px">
+
+            <input type="hidden" asp-for="ID"/>
+
+            <div class="col-lg-1">
+                <label asp-for="Name"></label>
+            </div>
+            <div class="col-lg-4">
+                <input asp-for="Name" class="form-control" />
+            </div>
+
+            <div class="col-lg-1">
+                <label asp-for="Description"></label>
+            </div>
+            <div class="col-lg-4">
+                <input asp-for="Description" class="form-control" />
+            </div>
+
+            <div class="col-lg-2">
+                @if (Model.ID <= 0)
+                {
+                    <input type="submit" class="btn btn-primary" asp-action="CreateDepartment" value="CreateDepartment" />
+                }
+                else
+                {
+                    <input type="submit" class="btn btn-primary" asp-action="UpdateDepartment" value="UpdateDepartment" />
+                }
+            </div>
+
+        </div>
+
+    </form>
+
+}
+

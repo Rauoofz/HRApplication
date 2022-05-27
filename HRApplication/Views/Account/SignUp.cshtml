@@ -1,0 +1,80 @@
+﻿@model VMSignUpModel
+@{
+    ViewData["Title"] = "SignUp";
+}
+
+<h1>SignUp</h1>
+
+
+@section Body{ 
+
+
+    <form method="post">
+
+
+        <div class="row" style="margin-top:25px">
+
+            <div class="col-lg-1">
+                <label asp-for="signUp.Name"></label>
+            </div>
+            <div class="col-lg-4">
+                <input asp-for="signUp.Name" class="form-control" />
+            </div>
+
+        </div>
+        <div class="row" style="margin-top:25px">
+
+            <div class="col-lg-1">
+                <label asp-for="signUp.UserName"></label>
+            </div>
+            <div class="col-lg-4">
+                <input asp-for="signUp.UserName" class="form-control" />
+            </div>
+
+        </div>
+        <div class="row" style="margin-top:25px">
+
+            <div class="col-lg-1">
+                <label asp-for="signUp.Email"></label>
+            </div>
+            <div class="col-lg-4">
+                <input asp-for="signUp.Email" class="form-control" />
+            </div>
+
+        </div>
+
+        <div class="row" style="margin-top:25px">
+
+            <div class="col-lg-1">
+                <label asp-for="signUp.Password"></label>
+            </div>
+            <div class="col-lg-4">
+                <input asp-for="signUp.Password" class="form-control" />
+            </div>
+
+        </div>
+        <div class="row" style="margin-top:25px">
+
+            <div class="col-lg-1">
+                <label>Role</label>
+            </div>
+            <div class="col-lg-4">
+                <select asp-for="signUp.RoleId" asp-items='new SelectList(Model.Roles,"Id","Name")' class="form-control"></select>
+            </div>
+
+        </div>
+
+        <div class="row" style="margin-top:25px">
+
+            
+            <div class="col-lg-4">
+                <input type="submit" class="btn btn-primary" value="CreateAccount" asp-action="CreateAccount"/>
+            </div>
+
+        </div>
+
+
+    </form>
+
+}
+

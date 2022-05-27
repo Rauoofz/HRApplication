@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewData["Title"] = "_LayoutPage";
+}
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_LayoutPage</title>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.js"></script>
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container-fluid bg">
+        <div class="row">
+            <nav class="navbar-inverse">
+                <div class="navbar-brand">
+                    HR SYSTEM
+                </div>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-target="#menu1" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div id="menu1" class="navbar-collapse collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a asp-action="Index" asp-controller="Employee">New Employee</a>
+                            </li>
+                            <li>
+                                <a asp-action="Employees" asp-controller="Employee">Employee List</a>
+                            </li>
+                            <li>
+                                <a asp-action="Index" asp-controller="Department">Department</a>
+                            </li>
+                            <li>
+                                <a asp-action="Department" asp-controller="Department">Department List</a>
+                            </li>
+                        </ul>
+                    
+                    <ul class="nav navbar-nav navbar-right">
+                       
+                            <li><a class="glyphicon glyphicon-log-out" asp-controller="Account" asp-action="LogOut"> Logout</a></li>
+                       
+                            <li><a class="glyphicon glyphicon-log-in" asp-controller="Account" asp-action="SignIn"> Sign In</a></li>
+                       
+                    </ul>
+                </div>
+
+            </nav>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                @RenderSection("Body",false)
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+
