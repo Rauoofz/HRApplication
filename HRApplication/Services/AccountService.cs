@@ -52,5 +52,16 @@ namespace HRApplication.Services
             return result;
         }
 
+        public async Task<SignInResult> SignIn(SignInModel model)
+        {
+            var result= await signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RemeberMe, false);
+            return result;
+        }
+
+        public async Task SignOut()
+        {
+            await signInManager.SignOutAsync();
+        }
+
     }
 }

@@ -12,5 +12,7 @@ namespace HRApplication.Services
         Task<IdentityResult> CreateAccount(SignUpModel model);
         IQueryable<IdentityRole> GetRoles();
         Task<IdentityResult> CreateRole(RoleModel role);
+        Task<SignInResult> SignIn(SignInModel model);
+        Task SignOut();
     }
 }

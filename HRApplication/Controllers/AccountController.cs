@@ -42,7 +42,7 @@ namespace HRApplication.Controllers
             
             if(result.Succeeded)
             {
-                return View("AddRoles");
+                return View("SignIn");
             }
             else
             {
@@ -50,6 +50,33 @@ namespace HRApplication.Controllers
 
                 return View("SignUp", vMSign);
             }
+        }
+        [Route("")]
+        public IActionResult SignIn()
+        {
+            return View("SignIn");
+        }
+
+        public async Task<IActionResult> Login(SignInModel model)
+        {
+            var result = await accountService.SignIn(model);
+
+            if(result.Succeeded)
+            {
+                return RedirectToAction("Index","Employee");
+            }
+            else
+            {
+                ViewData["Error"] = "Invalid UserName Or Password";
+                return View("SignIn");
+            }
+
+        }
+
+        public async Task<IActionResult> signOut()
+        {
+            await accountService.SignOut();
+            return View("SignIn");
         }
 
 

@@ -1,0 +1,61 @@
+﻿@model SignInModel
+@{
+    ViewData["Title"] = "SignIn";
+}
+
+<h1>SignIn</h1>
+
+@section Body{ 
+
+    <form method="post">
+
+        <div class="row" style="margin-top:10px">
+
+            <div class="col-lg-4">
+                <label style="color:red">@ViewData["Error"]</label>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:25px">
+
+            <div class="col-lg-1">
+                <label asp-for="UserName"></label>
+            </div>
+            <div class="col-lg-4">
+                <input asp-for="UserName" class="form-control" />
+            </div>
+
+        </div>
+
+        <div class="row" style="margin-top:25px">
+
+            <div class="col-lg-1">
+                <label asp-for="Password"></label>
+            </div>
+            <div class="col-lg-4">
+                <input type="password" asp-for="Password" class="form-control" />
+            </div>
+
+        </div>
+
+        <div class="row" style="margin-top:25px">
+
+            <div class="col-lg-1">
+                <input type="checkbox" asp-for="RemeberMe" />
+                <label asp-for="RemeberMe"></label>
+            </div>
+
+        </div>
+
+        <div class="row" style="margin-top:25px">
+
+            <div class="col-lg-offset-5">
+                <input type="submit" asp-action="Login" value="SignIn" class="btn btn-primary" />
+            </div>
+            
+        </div>
+
+    </form>
+
+}
+

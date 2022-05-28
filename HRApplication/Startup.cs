@@ -47,6 +47,11 @@ namespace HRApplication
                 option.Password.RequireLowercase = false;
             });
 
+            services.ConfigureApplicationCookie(cookie =>
+            {
+                cookie.LoginPath = "/Account/SignIn";
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,13 +81,15 @@ namespace HRApplication
                 RequestPath = "/img"
             });
 
+            
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Account}/{action=SignIn}/{id?}");
             });
         }
     }

@@ -1,6 +1,7 @@
 ﻿using HRApplication.Data;
 using HRApplication.Models;
 using HRApplication.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace HRApplication.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class EmployeeController : Controller
     {
         private readonly IConfiguration configuration;

@@ -1,4 +1,6 @@
-﻿
+﻿@using Microsoft.AspNetCore.Identity
+@using HRApplication.Data
+@inject SignInManager<ApplicationUser> signIn
 @{
     ViewData["Title"] = "_LayoutPage";
 }
@@ -33,7 +35,10 @@
                     </button>
                 </div>
                 <div id="menu1" class="navbar-collapse collapse">
-                    
+
+                    @if(signIn.IsSignedIn(User))
+                        {
+
                         <ul class="nav navbar-nav">
                             <li>
                                 <a asp-action="Index" asp-controller="Employee">New Employee</a>
@@ -48,13 +53,21 @@
                                 <a asp-action="Department" asp-controller="Department">Department List</a>
                             </li>
                         </ul>
+                    }
                     
                     <ul class="nav navbar-nav navbar-right">
-                       
-                            <li><a class="glyphicon glyphicon-log-out" asp-controller="Account" asp-action="LogOut"> Logout</a></li>
-                       
-                            <li><a class="glyphicon glyphicon-log-in" asp-controller="Account" asp-action="SignIn"> Sign In</a></li>
-                       
+
+                        @if (signIn.IsSignedIn(User))
+                        {
+
+                            <li><a class="glyphicon glyphicon-log-out" asp-controller="Account" asp-action="signOut"> Logout</a></li>
+                        }
+                        else
+                        {
+
+                            <li><a class="glyphicon glyphicon-log-in" asp-controller="Account" asp-action="SignIn"> SignIn</a></li>
+                        }
+
                     </ul>
                 </div>
 
